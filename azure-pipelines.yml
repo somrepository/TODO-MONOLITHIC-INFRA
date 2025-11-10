@@ -1,0 +1,49 @@
+
+trigger:
+  branches:
+    include:
+      - features*
+
+pool: spiderman 
+ 
+stages:
+  - stage: Build
+    displayName: runnig first build
+    jobs:
+      - job: Tfinstallation
+        displayName: Terraform Installation
+        steps:
+        - task: TerraformInstaller@1
+          inputs:
+            terraformVersion: 'latest'
+
+  - stage: Terraform_init_fmt_validate_plan
+    displayName: running Terraform_init_fmt_validate_plan
+    jobs:
+      - job: TF_INIT
+        displayName: terraform init
+        steps:
+        - task: TerraformTask@5
+          inputs:
+            provider: 'azurerm'
+            command: 'init'
+            workingDirectory: '$(System.DefaultWorkingDirectory)/environment/dev'
+            backendServiceArm: 'Azure-to-ado-svc'
+            backendAzureRmResourceGroupName: 'yuvi'
+            backendAzureRmStorageAccountName: 'yuvistg'
+            backendAzureRmContainerName: 'yuvicntr'
+            backendAzureRmKey: 'backup.tfstate'
+
+        - task: TerraformTask@5
+          inputs:
+            provider: 'azurerm'
+            command: 'validate'
+            workingDirectory: '$(System.DefaultWorkingDirectory)/environment/dev'
+        - task: TerraformTask@5
+          inputs:
+            provider: 'azurerm'
+            command: 'plan'
+            workingDirectory: '$(System.DefaultWorkingDirectory)/environment/dev'
+            environmentServiceNameAzureRM: 'Azure-to-ado-svc'
+
+
