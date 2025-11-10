@@ -27,6 +27,7 @@ stages:
           inputs:
             provider: 'azurerm'
             command: 'init'
+            workingDirectory: '$(System.DefaultWorkingDirectory)/environment/dev'
             backendServiceArm: 'Azure-to-ado-svc'
             backendAzureRmResourceGroupName: 'yuvi'
             backendAzureRmStorageAccountName: 'yuvistg'
@@ -37,10 +38,12 @@ stages:
           inputs:
             provider: 'azurerm'
             command: 'validate'
+            workingDirectory: '$(System.DefaultWorkingDirectory)/environment/dev'
         - task: TerraformTask@5
           inputs:
             provider: 'azurerm'
             command: 'plan'
+            workingDirectory: '$(System.DefaultWorkingDirectory)/environment/dev'
             environmentServiceNameAzureRM: 'Azure-to-ado-svc'
 
 
