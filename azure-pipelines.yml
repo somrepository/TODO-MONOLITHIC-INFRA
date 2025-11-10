@@ -1,6 +1,8 @@
 
 trigger:
--  features
+  branches:
+    include:
+      - features
 
 pool: spiderman 
  
@@ -30,5 +32,15 @@ stages:
             backendAzureRmStorageAccountName: 'yuvistg'
             backendAzureRmContainerName: 'yuvicntr'
             backendAzureRmKey: 'backup.tfstate'
+
+        - task: TerraformTask@5
+          inputs:
+            provider: 'azurerm'
+            command: 'validate'
+        - task: TerraformTask@5
+          inputs:
+            provider: 'azurerm'
+            command: 'plan'
+            environmentServiceNameAzureRM: 'Azure-to-ado-svc'
 
 
