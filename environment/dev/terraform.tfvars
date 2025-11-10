@@ -2,7 +2,7 @@ rgsdev = {
 
   rg1 = {
 
-    name       = "yuvirg"
+    name       = "yuvi_rg"
     location   = "centralindia"
     managed_by = "terrform"
     tags       = {
