@@ -8,7 +8,7 @@ module "nsgm" {
 
 module "pipm" {
   depends_on = [module.rgsm]
-  source     = "../../../TODO-MONOLITHIC-INFRA-master/TODO-MONOLITHIC-INFRA-master/module/azurerm_public_ip"
+  source     = "../../module/azurerm_PIP"
 
   pip = var.pipdev
 
