@@ -159,7 +159,7 @@ nsgdev = {
 
 stgdev = {
   storage1 = {
-    name                     = "yuvistorage1"
+    name                     = "yuvistorage2"
     resource_group_name      = "yuvi_rg"
     location                 = "centralindia"
     account_tier             = "Standard"
