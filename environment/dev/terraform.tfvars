@@ -9,7 +9,17 @@ rgsdev = {
 
       env = "dev"
     }
+  }
 
+   rg2 = {
+
+    name       = "yuvi_rg123"
+    location   = "centralindia"
+    managed_by = "terrform"
+    tags = {
+
+      env = "dev"
+    }
   }
 }
 
