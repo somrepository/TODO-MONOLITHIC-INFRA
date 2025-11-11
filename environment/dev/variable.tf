@@ -1,1 +1,10 @@
 variable "rgsdev" {}
+variable "vnetworksdev" {}
+variable "subnetsvdev" {}
+variable "nicvdev" {}
+variable "lvmvdev" {}
+variable "pipdev" {}
+variable "mssql_serverdev" {}
+variable "mssql_dbvdev" {}
+variable "nsgdev" {}
+variable "stgdev" {}

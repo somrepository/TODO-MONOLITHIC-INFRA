@@ -1,4 +1,19 @@
-    *.tfstate
-    *.tfstate.backup
-    .terraform/
-    .terraform.lock.hcl
+# -----------------------------
+# Terraform related
+# -----------------------------
+*.tfstate
+*.tfstate.*
+crash.log
+crash.*.log
+.terraform/
+.terraform.lock.hcl
+*.tfvars
+*.tfvars.json
+
+# -----------------------------
+# Provider binaries (avoid large files)
+# -----------------------------
+.terraform/providers/
+terraform-provider-*
+
+# ------------------------

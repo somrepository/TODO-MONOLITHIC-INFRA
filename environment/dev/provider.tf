@@ -6,7 +6,12 @@ terraform {
     }
   }
 
-  backend "azurerm" {}
+   backend "azurerm" {
+    resource_group_name = "yuvi"
+    storage_account_name = "yuvistg"
+    container_name = "yuvicntr"
+    key = "backupterraform.tfstate"
+  }
 }
 
 provider "azurerm" {
