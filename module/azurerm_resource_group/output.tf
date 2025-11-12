@@ -11,18 +11,3 @@ output "rg_location" {
   }
 
 
-
-
-
-  output "azurerm_resource_group_name" {
-
-    value = azurerm_resource_group.rgs.name
-
-  }
-
-output "azurerm_resource_group_location" {
-
-  value = azurerm_resource_group.rgs.location
-  
-}
-

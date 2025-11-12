@@ -10,12 +10,3 @@ resource "azurerm_resource_group" "rgs" {
 }
 
 
-output "mysecret" {
-    value = azurerm_resource_group.rgs.managed_by
-  
-}
-
-output "mysecret1" {
-    value = azurerm_resource_group.rgs.location
-  
-}

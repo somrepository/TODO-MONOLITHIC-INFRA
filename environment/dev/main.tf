@@ -1,18 +1,18 @@
 
-# module "nsgm" {
-#   depends_on = [ module.rgsm ]
-#   source = "../../module/nsg"
-#   nsg    = var.nsgdev
+module "nsgm" {
+  depends_on = [ module.rgsm ]
+  source = "../../module/nsg"
+  nsg    = var.nsgdev
 
-# }
+}
 
-# module "pipm" {
-#   depends_on = [module.rgsm]
-#   source     = "../../module/azurerm_PIP"
+module "pipm" {
+  depends_on = [module.rgsm]
+  source     = "../../module/azurerm_PIP"
 
-#   pip = var.pipdev
+  pip = var.pipdev
 
-# }
+}
 
 module "rgsm" {
 
@@ -21,49 +21,49 @@ module "rgsm" {
 }
 
 
-# module "storage_accountm" {
-#   source = "../../module/azurerm_storage_account"
+module "storage_accountm" {
+  source = "../../module/azurerm_storage_account"
 
-#   stgv = var.stgdev
+  stgv = var.stgdev
 
-# }
-
-
-
-# module "vnetworksm" {
-#   depends_on = [module.rgsm]
-
-#   source    = "../../module/azurerm_virtual_network"
-#   vnetworks = var.vnetworksdev
-# }
+}
 
 
+
+module "vnetworksm" {
+  depends_on = [module.rgsm]
+
+  source    = "../../module/azurerm_virtual_network"
+  vnetworks = var.vnetworksdev
+}
 
 
 
 
 
-# module "virtual-machinem" {
-#   depends_on = [ module.pipm ]
-#   source   = "../../module/azurerm_virtual_machine"
-#   subnetsv = var.subnetsvdev
-#   nicv     = var.nicvdev
-#   lvmv     = var.lvmvdev
-# }
 
-# module "mssql_dbm" {
-#   depends_on = [ module.rgsm, module.mssqlserverm ]
-#   source    = "../../module/azurerm_sql_database"
-#   mssql_dbv = var.mssql_dbvdev
 
-# }
+module "virtual-machinem" {
+  depends_on = [ module.pipm ]
+  source   = "../../module/azurerm_virtual_machine"
+  subnetsv = var.subnetsvdev
+  nicv     = var.nicvdev
+  lvmv     = var.lvmvdev
+}
 
-# module "mssqlserverm" {
-#   depends_on = [ module.rgsm ]
-#   source       = "../../module/azurerm_sql_server"
-#   mssql_server = var.mssql_serverdev
+module "mssql_dbm" {
+  depends_on = [ module.rgsm, module.mssqlserverm ]
+  source    = "../../module/azurerm_sql_database"
+  mssql_dbv = var.mssql_dbvdev
 
-# }
+}
+
+module "mssqlserverm" {
+  depends_on = [ module.rgsm ]
+  source       = "../../module/azurerm_sql_server"
+  mssql_server = var.mssql_serverdev
+
+}
 
 
 

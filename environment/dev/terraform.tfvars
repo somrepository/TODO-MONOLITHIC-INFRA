@@ -1,15 +1,15 @@
 rgsdev = {
 
-  # rg1 = {
+  rg1 = {
 
-  #   name       = "yuvi_rg"
-  #   location   = "centralindia"
-  #   managed_by = "terrform"
-  #   tags = {
+    name       = "yuvi_rg"
+    location   = "centralindia"
+    managed_by = "terrform"
+    tags = {
 
-  #     env = "dev"
-  #   }
-  # }
+      env = "dev"
+    }
+  }
 
    rg2 = {
 
@@ -100,7 +100,7 @@ pipdev = {
     name                = "frontend-public-ip"
     resource_group_name = "yuvi_rg"
     location            = "centralindia"
-    allocattion_method  = "Static"
+    allocation_method  = "Static"
     tags = {
       env = "prod"
     }
