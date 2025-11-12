@@ -1,13 +1,25 @@
-# resource "azurerm_bastion_host" "bastion" {
-#     for_each = var.bastionv
+# resource "azurerm_subnet" "example" {
+#   name                 = "AzureBastionSubnet"
+#   resource_group_name  = azurerm_resource_group.example.name
+#   virtual_network_name = azurerm_virtual_network.example.name
+#   address_prefix       = "192.168.1.224/27"
+# }
 
-#   name                = each.value.name
-#   location            = each.value.location
-#   resource_group_name = each.value.resource_group_name
+# resource "azurerm_public_ip" "example" {
+#   name                = "examplepip"
+#   location            = azurerm_resource_group.example.location
+#   resource_group_name = azurerm_resource_group.example.name
+#   allocation_method   = "Static"
+#   sku                 = "Standard"
+# }
+
+# resource "azurerm_bastion_host" "example" {
+#   name                = "examplebastion"
+#   location            = azurerm_resource_group.example.location
+#   resource_group_name = azurerm_resource_group.example.name
 
 #   ip_configuration {
-#     name                 = each.value.name_ipconfiguration
+#     name                 = "configuration"
 #     subnet_id            = azurerm_subnet.example.id
 #     public_ip_address_id = azurerm_public_ip.example.id
 #   }
-# }
