@@ -1,15 +1,15 @@
 rgsdev = {
 
-  rg1 = {
+  # rg1 = {
 
-    name       = "yuvi_rg"
-    location   = "centralindia"
-    managed_by = "terrform"
-    tags = {
+  #   name       = "yuvi_rg"
+  #   location   = "centralindia"
+  #   managed_by = "terrform"
+  #   tags = {
 
-      env = "dev"
-    }
-  }
+  #     env = "dev"
+  #   }
+  # }
 
    rg2 = {
 
