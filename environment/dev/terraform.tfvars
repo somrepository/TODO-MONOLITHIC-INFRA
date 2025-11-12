@@ -9,7 +9,17 @@ rgsdev = {
 
       env = "dev"
     }
+  }
 
+   rg2 = {
+
+    name       = "yuvi_rg123"
+    location   = "centralindia"
+    managed_by = "terrform"
+    tags = {
+
+      env = "dev"
+    }
   }
 }
 
@@ -90,7 +100,7 @@ pipdev = {
     name                = "frontend-public-ip"
     resource_group_name = "yuvi_rg"
     location            = "centralindia"
-    allocattion_method  = "Static"
+    allocation_method  = "Static"
     tags = {
       env = "prod"
     }

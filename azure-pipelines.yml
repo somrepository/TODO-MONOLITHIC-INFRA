@@ -1,33 +1,31 @@
 
 trigger:
-  branches:
-    include:
-      - features*
+  # branches:
+  #   include:
+      - features/*
+      - main
 
 pool: spiderman 
+
+variables :
+  workDir : '$(System.DefaultWorkingDirectory)/environment/dev'
  
 stages:
   - stage: Build
-    displayName: runnig first build
+    displayName: Build
     jobs:
-      - job: Tfinstallation
-        displayName: Terraform Installation
+      - job: TerraformInstallation
+        displayName: Terraform Init and Plan Job 
         steps:
         - task: TerraformInstaller@1
           inputs:
             terraformVersion: 'latest'
 
-  - stage: Terraform_init_fmt_validate_plan
-    displayName: running Terraform_init_fmt_validate_plan
-    jobs:
-      - job: TF_INIT
-        displayName: terraform init
-        steps:
         - task: TerraformTask@5
           inputs:
             provider: 'azurerm'
             command: 'init'
-            workingDirectory: '$(System.DefaultWorkingDirectory)/environment/dev'
+            workingDirectory: $(workDir)
             backendServiceArm: 'Azure-to-ado-svc'
             backendAzureRmResourceGroupName: 'yuvi'
             backendAzureRmStorageAccountName: 'yuvistg'
@@ -45,5 +43,13 @@ stages:
             command: 'plan'
             workingDirectory: '$(System.DefaultWorkingDirectory)/environment/dev'
             environmentServiceNameAzureRM: 'Azure-to-ado-svc'
+  # - stage: Scanning 
+  #   displayName: Scanning
+  #   jobs: 
+  #     -job: TF-Sec-Scanning-Job
+  #     displayName: Scanning by TF-Sec
+  #     pool: spiderman
+  #     steps:
+  #     - task:  
 
 
